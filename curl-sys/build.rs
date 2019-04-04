@@ -269,6 +269,9 @@ fn main() {
                 if let Some(path) = env::var_os("DEP_OPENSSL_INCLUDE") {
                     cfg.include(path);
                 }
+                if env::var_os("DEP_OPENSSL_VENDORED").is_none() {
+                    cfg.define("CURL_CA_FALLBACK", None);
+                }
             }
         }
 
